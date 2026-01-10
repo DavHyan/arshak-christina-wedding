@@ -1,0 +1,711 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Great+Vibes&display=swap');
+
+h1.name {
+  font-family: 'Playfair Display', serif;
+  font-size: 48px;
+  letter-spacing: 5px;
+}
+
+h1.ampersand {
+  font-family: 'Great Vibes', cursive;
+  font-size: 36px;
+} */
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  /* font-family: "Playfair Display", serif; */
+  background-color: #f8f0ea;
+}
+
+.app-wrapper {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.app-container {
+  /* padding: 20px; */
+  font-family: sans-serif;
+  position: relative;
+}
+
+.language-switcher {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 99999;
+  height: 40px;
+}
+
+.dropdown-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.flag-icon {
+  width: 30px;
+  height: 30px;
+  margin-right: 5px;
+  border-radius: 50%;
+  vertical-align: middle;
+  object-fit: cover;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-menu {
+  display: none;
+  flex-direction: column;
+  background: #fff;
+  position: absolute;
+  top: 40px;
+  right: 0;
+  border: 1px solid #ccc;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 99;
+}
+
+.language-switcher:hover .dropdown-menu {
+  display: flex;
+}
+
+.dropdown-menu div {
+  cursor: pointer;
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+}
+
+.dropdown-menu div:hover {
+  background-color: #f0f0f0;
+}
+
+/* Section 1: Image with Names */
+.invitation-container {
+  height: 100vh;
+  background-color: #f8f0ea;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.main-image {
+  width: 100vw;
+  max-width: 958px;
+  height: 100vh;
+  /* max-width: none; */
+  background-image: url('./assets/main_background.jpg');
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  border-radius: 0;
+  margin-top: 180px;
+}
+
+.text-overlay-wrapper {
+  position: relative;
+  width: 100%;
+  height: auto;
+  margin-top: -60px;
+  /* margin-bottom: 120px; */
+}
+
+.text-overlay-blur {
+  position: absolute;
+  inset: 0;
+  left: -10%;
+  background-color: #f4efe9;
+  filter: blur(22px);
+  z-index: 0;
+  width: calc(100% + 80px);
+  margin: 0 auto;
+  border-radius: 0 0 0 0;
+}
+
+.text-overlay {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1; /* Important to keep it above the blur */
+  width: 100%;
+  /* padding: 20px; */
+  background-color: transparent; /* Optional */
+}
+
+.names {
+  margin-top: 20px;
+  font-size: 2.8rem;
+  font-weight: 300;
+  color: #1a1a1a;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  /* margin-bottom: 120px; */
+}
+
+.name-left,
+.name-right {
+  font-size: 2rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 200;
+}
+
+.and {
+  font-family: "Great Vibes", cursive;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 2rem;
+}
+
+.swipe {
+  margin-top: 30px;
+  font-size: 1rem;
+  color: #333;
+}
+
+.arrow {
+  display: block;
+  font-size: 1.5rem;
+  margin-top: 5px;
+}
+
+/* Section 2: Guest Details and Calendar */
+.details-section {
+  padding: 200px 20px;
+  text-align: center;
+  position: relative;
+  background-color: #f8f0ea;
+}
+
+.guests-title {
+  font-size: 2rem;
+  font-weight: 400;
+  letter-spacing: 2px;
+}
+
+.guests-text {
+  font-size: 0.95rem;
+  margin: 10px 0;
+  line-height: 1.5;
+  color: #444;
+}
+
+.married-title {
+  font-size: 1.5rem;
+  font-weight: 300;
+  margin-top: 20px;
+  color: #1a1a1a;
+}
+
+.calendar {
+  margin-top: 40px;
+}
+
+.month {
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.calendar table {
+  margin: 0 auto;
+  border-collapse: collapse;
+  font-size: 1rem;
+}
+
+.calendar th,
+.calendar td {
+  padding: 10px;
+}
+
+.selected {
+  background-color: #1a1a1a;
+  color: #fff;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+}
+
+/* Flowers */
+.flower {
+  position: absolute;
+  width: 80px;
+  height: auto;
+  opacity: 0.9;
+}
+
+.flower-left {
+  top: 40px;
+  left: 20px;
+}
+
+.flower-right {
+  bottom: 30px;
+  right: 20px;
+}
+/* Section 3: Timeline */
+.timeline-section {
+  background-color: #f8f0ea;
+  padding-bottom: 60px;
+  position: relative;
+}
+
+.table-image {
+  width: 100%;
+  max-width: 900px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.timeline-content {
+  /* padding: 40px 20px; */
+  text-align: center;
+  position: relative;
+}
+
+.timeline-title {
+  font-size: 2.8rem;
+  letter-spacing: 2px;
+  margin-bottom: 40px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 200;
+}
+
+.timeline {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 60px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.event {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1rem;
+}
+
+.event-time {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.event-icon {
+  font-size: 1.5rem;
+  margin: 8px 0;
+}
+
+.event-label {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.location-title {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  font-size: 1.7rem;
+  letter-spacing: 1.5px;
+  font-weight: 200;
+  font-family: "Montserrat", sans-serif;
+}
+
+/* Timeline Flowers */
+.flower-timeline-left {
+  position: absolute;
+  top: 40px;
+  left: 20px;
+  width: 80px;
+  opacity: 0.9;
+}
+
+.flower-timeline-right {
+  position: absolute;
+  bottom: 30px;
+  right: 20px;
+  width: 80px;
+  opacity: 0.9;
+}
+
+.wedding-info-section {
+  /* padding: 40px 20px; */
+  background-color: #f8f0ea;
+  font-family: Georgia, serif;
+  color: #333;
+}
+
+.location {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  justify-content: center;
+  margin-bottom: 140px;
+  gap: 50px;
+}
+
+.image {
+  width: 20%;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* .line{
+  border-radius: 0 0 0 0;
+  background-color: #000000;
+  background-position: center;
+  border-color: transparent;
+  border-style: solid;
+} */
+
+.location h2 {
+  margin: 0;
+  font-size: 22px;
+}
+
+.location p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #777;
+}
+
+.dress-code {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.dress-code h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  font-weight: 200;
+  font-family: "Montserrat", sans-serif;
+}
+
+.color-palette {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 15px;
+}
+
+.color-circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+}
+
+/* RSVP SECTION BACKGROUND FIX */
+.rsvp-section {
+  padding: 60px 20px;
+  text-align: center;
+  background-color: #f8f0ea;
+  color: #333;
+  font-family: Georgia, serif;
+}
+
+.rsvp-section h2 {
+  /* font-size: 22px; */
+  margin-bottom: 10px;
+}
+
+/* Subtitle (Please fill out...) */
+.rsvp-subtitle {
+  font-size: 22px;
+  margin: 8px 0 30px;
+}
+
+/* Label for input */
+.input-label {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  text-align: left;
+  margin: 0 auto 20px;
+  width: fit-content;
+  color: #444;
+}
+
+/* Input box */
+.rsvp-form input[type="text"] {
+  padding: 10px;
+  width: 280px;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+/* Presence text */
+.presence-label {
+  font-size: 14px;
+  margin: 20px 0 10px;
+  font-weight: 500;
+}
+
+/* Radio buttons group */
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: flex-start;
+  margin: 0 auto 20px;
+  width: fit-content;
+}
+
+.radio-group label {
+  font-size: 14px;
+  color: #333;
+}
+
+/* Submit button */
+.rsvp-form button {
+  padding: 10px 30px;
+  background-color: #2b2e4a;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.rsvp-form button:hover {
+  background-color: #1e1f33;
+}
+
+/* .rsvp-form {
+  margin-top: 15px;
+}
+
+.rsvp-form input {
+  padding: 10px;
+  width: 250px;
+  max-width: 90%;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+.rsvp-form button {
+  padding: 10px 20px;
+  background-color: #2b2e4a;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.rsvp-form button:hover {
+  background-color: #1e1f33;
+}
+.rsvp-section {
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.rsvp-section h3 {
+  font-size: 18px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.rsvp-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+
+.rsvp-form label {
+  display: block;
+  font-size: 14px;
+  color: #444;
+}
+
+.rsvp-form input[type="text"] {
+  padding: 10px;
+  margin-top: 8px;
+  width: 300px;
+  max-width: 90%;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.presence-label {
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: left;
+}
+
+.radio-group label {
+  font-size: 14px;
+  color: #333;
+}
+
+.rsvp-form button {
+  margin-top: 15px;
+  padding: 10px 30px;
+  background-color: #2b2e4a;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+} */
+
+.rsvp-form button:hover {
+  background-color: #1e1f33;
+}
+
+/* Final "See You" section */
+.final-message {
+  margin-top: 60px;
+  text-align: center;
+}
+
+.final-message h2 {
+  font-size: 24px;
+  font-weight: normal;
+  line-height: 1.4;
+  margin-bottom: 25px;
+}
+
+.footer-image {
+  width: 100%;
+  max-width: 900px;
+  /* height: 100vh; */
+  margin-top: -35px;
+}
+
+.footer-text {
+  font-weight: 200;
+  font-family: "Montserrat", sans-serif;
+}
+
+.timeline-container {
+  background-color: #fdf8f4;
+  padding: 50px 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  /* font-family: 'Georgia', serif; */
+}
+
+.timeline-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.timeline-icon {
+  width: 32px;
+  height: 32px;
+  margin-bottom: 10px;
+}
+
+.timeline-time {
+  font-size: 28px;
+  color: #000;
+  font-weight: 300;
+}
+
+.timeline-label {
+  font-size: 16px;
+  color: #444;
+  margin-top: 5px;
+}
+
+.location-section {
+  background-color: #f8f1ea;
+  padding: 60px 20px;
+  text-align: center;
+  font-family: "Arial", sans-serif;
+}
+
+.location-title {
+  font-size: 2.5rem;
+  letter-spacing: 2px;
+  font-weight: 300;
+  text-align: center;
+  /* font-family: 'Cormorant Garamond', serif; */
+}
+
+.location-divider {
+  width: 60px;
+  height: 2px;
+  margin: 10px auto 40px;
+  background-color: #000;
+  border: none;
+}
+
+.location-list {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  align-items: center;
+}
+
+.location-item {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  max-width: 900px;
+  width: 100%;
+}
+
+.location-item.reverse {
+  flex-direction: row-reverse;
+}
+
+.location-image {
+  width: 150px;
+  height: auto;
+  border-radius: 6px;
+}
+
+.location-text {
+  text-align: left;
+}
+
+.location-text h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.location-text p {
+  margin-top: 6px;
+  font-size: 0.75rem;
+  color: #555;
+}
