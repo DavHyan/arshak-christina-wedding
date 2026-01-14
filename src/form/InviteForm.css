@@ -1,0 +1,184 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+
+/* InviteForm styles to match the referenced design */
+
+.invite-section {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: #efebe6;
+  padding: 4rem 1rem;
+}
+
+.invite-card {
+  width: 768px; /* requested width */
+  max-width: 100%; /* responsive fallback */
+  min-height: 662px; /* requested height */
+  background-color: #f3f2f1;
+  border-radius: 12px;
+  box-shadow: 0 12px 24px rgba(13,12,11,0.04);
+  padding: 2.2rem 2.25rem 2.75rem 2.25rem;
+  margin: 0.5rem auto; /* center horizontally */
+  overflow-y: auto; /* handle overflow on small screens */
+}
+
+.invite-title {
+  font-size: 1.9rem;
+  font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  text-align: left; /* align heading to the left */
+  color: #5c3d2e;
+  margin-bottom: 1.5rem;
+  font-weight: 400;
+  padding-left: 0.25rem; /* slight offset to match form fields */
+}
+
+.invite-form {
+  width: 100%;
+  text-align: left; /* ensure all form text is left aligned */
+}
+
+.invite-form {
+  width: 100%;
+}
+
+.form-group {
+  margin-bottom: 1.25rem;
+}
+
+.form-label {
+  display: block;
+  color: #4d3b2a;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+  position: relative;
+  padding-left: 1.4rem; /* leave room for dot */
+}
+
+.form-label::before {
+  content: "";
+  position: absolute;
+  left: 0.2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #efe7d6; /* beige dot */
+  box-shadow: 0 1px 0 rgba(0,0,0,0.04);
+}
+
+.form-input {
+  width: 100%;
+  padding: 1rem 1rem;
+  border: 1px solid #e6e3de;
+  border-radius: 8px;
+  outline: none;
+  color: #5a4636;
+  box-sizing: border-box;
+  background: #fff;
+  font-size: 0.95rem;
+  box-shadow: inset 0 1px 0 rgba(0,0,0,0.02);
+}
+
+.form-input::placeholder {
+  color: #bfbfbf;
+}
+
+.radio-group {
+  display: flex;
+  flex-direction: column; /* stack options vertically so 'No' appears below 'Yes' */
+  gap: 12px; /* vertical spacing between options */
+}
+
+/* Arrange the two groups side-by-side on larger screens, stacked on small screens */
+.form-row {
+  display: flex;
+  flex-direction: row; /* place groups side-by-side */
+  gap: 1.25rem;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.form-row .form-group {
+  flex: 1; /* make both groups share row space evenly */
+} 
+
+/* Dotted divider under title */
+.dotted-divider {
+  width: 18%;
+  border-top: 2px dotted #e6e3de;
+  margin: 0.75rem 0 1rem 0;
+}
+
+.radio-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #5a4636;
+  font-size: 0.95rem;
+}
+
+/* Custom radio look replaced with .radio2 (empty circle -> filled dot) */
+.radio2{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  margin-right:24px;
+  cursor:pointer;
+  user-select:none;
+  position: relative;
+}
+
+.radio2 input{
+  position:absolute;
+  opacity:0;
+  pointer-events:none;
+}
+
+.radio2 .dot{
+  width:18px;
+  height:18px;
+  border:2px solid #9a9a9a;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+}
+
+.radio2 .dot::after{
+  content:"";
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:#6b6b6b;
+  transform:scale(0);
+  transition:transform .12s ease;
+}
+
+.radio2 input:checked + .dot::after{
+  transform:scale(1);
+}
+
+.form-error {
+  color: #d41919;
+  font-size: 0.875rem;
+  margin-top: 0.35rem;
+}
+
+.form-actions {
+  margin-top: 1.25rem;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.form-actions button {
+  min-width: 10rem;
+  padding: 0.7rem 1.35rem;
+  border-radius: 8px;
+}
+
+@media (max-width: 840px) {
+  .invite-card { width: 100%; min-height: auto; padding: 1.25rem; }
+  .invite-title { font-size: 1.25rem; }
+  .radio-group { gap: 22px; }
+  .form-row { flex-direction: column; }
+}

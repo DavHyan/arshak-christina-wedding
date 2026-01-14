@@ -1,0 +1,151 @@
+.admin_title_div {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 8px auto;
+  width: 90%;
+  max-width: 1440px;
+}
+
+.table,
+.td,
+.th {
+  border: 1px solid;
+}
+
+.table {
+  margin: 8px auto;
+  width: 90%;
+  max-width: 1440px;
+
+  .th {
+    padding: 8px;
+    font-size: 17px;
+  }
+
+  .td {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .call_to_link {
+      color: #111;
+      text-decoration: underline;
+    }
+  }
+
+  .td_p {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    white-space: nowrap;
+    font-family: Inter;
+    font-weight: 500;
+    text-align: center;
+  }
+
+  .tr {
+    display: flex;
+    align-items: center;
+  }
+
+  .tr:nth-child(odd) {
+    background-color: #ffffff;
+  }
+  .tr:nth-child(even) {
+    background-color: #ddebf7;
+  }
+  .admin_param {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    height: 40px;
+    background-color: #6cb2f1;
+    border: 1px #111 solid;
+  }
+
+  #guest_id {
+    width: 10%;
+    height: 120px;
+  }
+  .guestParam {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    .guestRow {
+      display: flex;
+      height: 40px;
+
+      #guest_name {
+        width: 50%;
+      }
+
+      #guest_phone {
+        width: 50%;
+      }
+
+      #guest_count {
+        width: 50%;
+      }
+
+      #guest_isVisting {
+        width: 50%;
+      }
+
+      #guest_bride_groom {
+        width: 100%;
+      }
+    }
+  }
+}
+
+// @media only screen and (max-width: 800px) {
+//   .table {
+//     width: 80%;
+//   }
+//   .th {
+//     font-size: 14px;
+//   }
+//   .td {
+//     font-size: 14px;
+//     width: fit-content;
+//   }
+//   #guest_id {
+//     width: fit-content;
+//     font-size: 9px;
+//   }
+// }
+
+// @media only screen and (max-width: 600px) {
+//   .table {
+//     width: 90%;
+//     .admin_param {
+//       font-size: 11px;
+//       border: 0.5px black solid;
+//     }
+//   }
+//   h3 {
+//     width: 90%;
+//     font-size: 14px;
+//   }
+// }
+
+// @media only screen and (max-width: 400px) {
+//   .table {
+//     width: 95%;
+//     .admin_param {
+//       font-size: 10px;
+//     }
+//   }
+//   .th {
+//     font-size: 12px;
+//   }
+//   .td {
+//     font-size: 11.5px;
+//     padding: 4px;
+//   }
+// }

@@ -1,26 +1,23 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import Sound from "./sound/Sound";
-import main_background from "./assets/main_background.jpg";
+
 import under_background from "./assets/under_background.jpg";
 import church_image from "./assets/icons/church.png";
 import church_image_loc from "./assets/location/church_image.jpg";
 import restaurant_image_loc from "./assets/location/restaurant_image.jpg";
-import bye_image from "./assets/icons/bye.png";
-import champagne from "./assets/champagne.png";
-import wedding_ring from "./assets/wedding-rings.png";
+
 import dinner from "./assets/dinner.png";
-import location_image from "./assets/main_background.jpg";
+import location_image from "./assets/location/restaurant_image.jpg";
 import ruFlag from "./assets/icons/en.png";
 import amFlag from "./assets/icons/am.png";
-
+import InviteForm from "form/InviteForm";
+import Footer from "footer/Footer";
+  
 const ruData = {
   welcome: {
     name1: "Arshak",
     name2: "Christina",
-    //start: "Дорогие гости!",
-    //mid: "Мы будем рады, если Вы разделите с нами один из самых волнительных и важных моментов нашей жизни —",
-    //end: "День нашей свадьбы!",
   },
   calendar: {
     month: "february",
@@ -47,31 +44,16 @@ const ruData = {
     title1: "Daily",
     title2: "Schedule",
     arr: [
-      /*{
-        text: "Дом невесты",
-        time: "10:00",
-        icon: wedding_ring,
-      },*/
       {
         text: "Church",
         time: "14:00",
         icon: church_image,
       },
-      /*{
-        text: "Встреча гостей",
-        time: "16:00-17:00",
-        icon: champagne,
-      },*/
       {
         text: "Restoran",
         time: "February 14th, Banquet Hall",
         icon: dinner,
       },
-      /*{
-        text: "Окончание вечера",
-        time: "23:00",
-        icon: bye_image,
-      },*/
     ],
   },
   footer: {
@@ -83,9 +65,6 @@ const amData = {
   welcome: {
     name1: "Արշակ",
     name2: "Քրիստինե",
-    //start: "Սիրելի հյուրեր",
-    //mid: "Մենք ուրախ կլինենք, եթե դուք կիսեք մեզ հետ մեր կյանքի ամենահուզիչ և կարևոր պահերից մեկը",
-    //end: "Մեր հարսանիքի օրը",
   },
   calendar: {
     month: "Փետրվար",
@@ -112,31 +91,16 @@ const amData = {
     title1: "Օրվա",
     title2: "ծրագիր",
     arr: [
-      /*{
-        text: "Հարսի տուն",
-        time: "10:00",
-        icon: wedding_ring,
-      },*/
       {
         text: "Եկեղեցի",
         time: "14:00",
         icon: church_image,
       },
-      /*{
-        text: "Հյուրերի դիմավորում",
-        time: "16:00-17:00",
-        icon: champagne,
-      },*/
       {
         text: "Փետրվարի 14-ին Հանդիսության սրահ",
         time: "14:00",
         icon: dinner,
       },
-      /*{
-        text: "Երեկոյի ավարտ",
-        time: "23:00",
-        icon: bye_image,
-      },*/
     ],
   },
   footer: {
@@ -150,7 +114,7 @@ function App() {
   const [data, setData] = useState(ruData);
 
   const handleDropdown = () => {
-    setIsOpen();
+    setIsOpen(!isOpen);
   };
 
   const handleChange = (lang) => {
@@ -214,9 +178,9 @@ function App() {
         {/* <img src={flowerLeft} alt="flower" className="flower flower-left" /> */}
         {/* <img src={flowerRight} alt="flower" className="flower flower-right" /> */}
 
-        <h2 className="guests-title">{data.welcome.start}</h2>
-        <p className="guests-text">{data.welcome.mid}</p>
-        <h3 className="married-title"> {data.welcome.end}</h3>
+        <h2 className="guests-title">{(data.welcome).start}</h2>
+        <p className="guests-text">{(data.welcome).mid}</p>
+        <h3 className="married-title"> {(data.welcome).end}</h3>
 
         <div className="calendar">
           <p className="month" style={{ textTransform: "uppercase" }}>
@@ -278,7 +242,7 @@ function App() {
               </tr>
               <tr>
                 <td>31</td>
-                <td colSpan="6"></td>
+                <td colSpan={6}></td>
               </tr>
             </tbody>
           </table>
@@ -472,13 +436,14 @@ function App() {
 
         {/* Footer image and text */}
         <div className="final-message">
-          <div class="text-overlay-wrapper" style={{ marginBottom: 0 }}>
-            <div class="text-overlay-blur"></div>
-            <div class="text-overlay">
+          <div className="text-overlay-wrapper" style={{ marginBottom: 0 }}>
+            <div className="text-overlay-blur"></div>
+            <div className="text-overlay">
               <h1
-                class="names footer-text"
+                className="names footer-text"
                 style={{ fontSize: "30px", padding: "4px" }}
               >
+            <InviteForm lang={lang} />
                 {data.footer.text}
               </h1>
             </div>
@@ -490,6 +455,10 @@ function App() {
           />
         </div>
       </div>
+
+      {/* Move footer outside the constrained container so background can be full width */}
+      <Footer />
+
       <Sound />
     </div>
   );

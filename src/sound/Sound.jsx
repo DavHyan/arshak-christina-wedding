@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Howl } from "howler";
-import "./Sound.scss";
+import "./Sound.css";
 
 const sound = new Howl({
   src: ["/wedding-music.mp3"],
