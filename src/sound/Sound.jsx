@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react"; // UPDATED: added useCallback
 import { Howl } from "howler";
 import "./Sound.css";
 
@@ -11,18 +11,18 @@ const sound = new Howl({
 const Sound = () => {
   const [isPlaying, setIsPlaying] = useState(false);
 
-  const togglePlay = () => {
+  const togglePlay = useCallback(() => { // UPDATED: wrapped in useCallback
     if (isPlaying) {
       sound.pause();
     } else {
       sound.play();
     }
-    setIsPlaying(!isPlaying);
-  };
+    setIsPlaying((prev) => !prev); // UPDATED: use functional update (safer)
+  }, [isPlaying]); // ADDED: dependency
 
   useEffect(() => {
     togglePlay();
-  }, []);
+  }, [togglePlay]); // UPDATED: add dependency
 
   return (
     <>

@@ -6,7 +6,6 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import App from './App';
 import Login from './login/Login';
 import Admin from './admin/Admin';
-import PrivateRoute from './authguard/AuthGuard';
 
 const container = document.getElementById('root');
 
