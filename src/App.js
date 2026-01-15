@@ -50,7 +50,7 @@ const ruData = {
         icon: church_image,
       },
       {
-        text: "Restoran",
+        text: "",
         time: "February 14th, Banquet Hall",
         icon: dinner,
       },

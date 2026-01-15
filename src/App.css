@@ -470,7 +470,6 @@ html {
   flex-direction: column;
   gap: 6px;
   align-items: flex-start;
-  margin: 0 auto 20px;
   width: fit-content;
 }
 

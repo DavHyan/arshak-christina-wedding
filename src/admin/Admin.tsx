@@ -24,9 +24,9 @@ const Admin: FC = () => {
   return (
     <div>
       <div className="admin_title_div">
-        <h3>Վարդգեսի և Տաթևի հյուրերի ցուցակը</h3>
+        <h3>Արշակ և Քրիստինե հյուրերի ցուցակը</h3>
         <h4 className="guests_count">
-          Վարդգեսի և Տաթևի հյուրերի թիվը {guests?.length} է
+          Արշակ և Քրիստինե հյուրերի թիվը {guests?.length} է
         </h4>
       </div>
       <div className="table">

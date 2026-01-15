@@ -51,21 +51,6 @@
   font-weight: 700;
   margin-bottom: 0.5rem;
   font-size: 0.95rem;
-  position: relative;
-  padding-left: 1.4rem; /* leave room for dot */
-}
-
-.form-label::before {
-  content: "";
-  position: absolute;
-  left: 0.2rem;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #efe7d6; /* beige dot */
-  box-shadow: 0 1px 0 rgba(0,0,0,0.04);
 }
 
 .form-input {
@@ -118,12 +103,44 @@
   font-size: 0.95rem;
 }
 
+/* Make option labels a fixed width so radio labels align */
+.option-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  width: 140px; /* same width for all labels */
+  min-width: 120px;
+  box-sizing: border-box;
+  font-size: 0.95rem;
+  color: #5a4636;
+  font-weight: 400;
+}
+
+/* Ensure the text inside labels fills the available label width */
+.option-label span,
+.radio-label span,
+.radio2 span {
+  display: inline-block; /* acts as flex item inside inline-flex parent */
+  flex: 1 1 auto;
+  min-width: 0; /* allow text to truncate or wrap within constrained width */
+  text-align: left;
+}
+
+/* Ensure custom radio labels (.radio2) match the `.radio-label` size and weight */
+.radio2,
+.radio2 span,
+.radio-label {
+  font-size: 0.95rem;
+  color: #5a4636;
+  font-weight: 40;
+}
+
 /* Custom radio look replaced with .radio2 (empty circle -> filled dot) */
 .radio2{
   display:inline-flex;
   align-items:center;
-  gap:10px;
-  margin-right:24px;
+  /* gap:10px; */
+  /* margin-right:0; */
   cursor:pointer;
   user-select:none;
   position: relative;
@@ -136,32 +153,64 @@
 }
 
 .radio2 .dot{
-  width:18px;
-  height:18px;
-  border:2px solid #9a9a9a;
-  border-radius:50%;
-  display:grid;
+  /* pill-shaped background like Tailwind example (w-12 h-7) */
+  width:  18px; /* w-12 */
+  height:18px; /* h-7 */
+  border-radius:100px;
+
+    min-width: 18px;     /* 👈 prevents horizontal stretch */
+  min-height: 18px;
+
+  flex: 0 0 18px;  
+  
+  background: #f3ead8; /* beige pill background */
+  display:inline-grid;
   place-items:center;
+  border:1px solid #e6dcc8; /* subtle border */
+  transition: background .12s ease, border-color .12s ease, transform .12s ease;
 }
 
+/* small inner dot (hidden by default) */
 .radio2 .dot::after{
   content:"";
-  width:8px;
-  height:8px;
+  width:12px; /* w-2 */
+  height:12px;
   border-radius:50%;
-  background:#6b6b6b;
+  background:transparent;
   transform:scale(0);
-  transition:transform .12s ease;
+  transition:transform .12s ease, background .12s ease;
+}
+
+/* when the input is checked, change outer border and show inner dot */
+.radio2 input:checked + .dot{
+  border-color: #d9cfbb; /* peer-checked:border */
 }
 
 .radio2 input:checked + .dot::after{
   transform:scale(1);
+  background: #6b5a46; /* inner filled color */
+}
+
+.radio2 input:focus + .dot{
+  box-shadow: 0 0 0 4px rgba(94,58,34,0.08);
+  outline: none;
 }
 
 .form-error {
-  color: #d41919;
+  color: transparent;
   font-size: 0.875rem;
   margin-top: 0.35rem;
+  transition: color 0.3s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.form-error.visible {
+  color: #d41919;
+}
+
+.error-container {
+  min-height: 1.5rem; /* Reserve space for error messages to prevent form height changes */
 }
 
 .form-actions {
@@ -181,4 +230,6 @@
   .invite-title { font-size: 1.25rem; }
   .radio-group { gap: 22px; }
   .form-row { flex-direction: column; }
+  .radio-group { justify-content: flex-start; align-items: flex-start; }
+  .option-label { justify-content: flex-start; }
 }

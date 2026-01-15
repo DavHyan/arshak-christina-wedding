@@ -44,7 +44,7 @@ interface InviteFormProps {
   lang: string;
 }
 
-const InviteForm: React.FC<InviteFormProps> = ({lang}) => {
+const InviteForm: React.FC<InviteFormProps> = ({ lang }) => {
   const {
     register,
     handleSubmit,
@@ -82,7 +82,7 @@ const InviteForm: React.FC<InviteFormProps> = ({lang}) => {
     <section id="contact-form" className="invite-section">
       <div className="invite-card">
         <h2 className="invite-title">
-        {lang === "ru" ? "Contact Us" : "Հետադարձ կապ"}
+          {lang === "ru" ? "Contact Us" : "Հետադարձ կապ"}
         </h2>
         <div className="dotted-divider" />
         <form onSubmit={handleSubmit(onSubmit)} className="invite-form">
@@ -94,11 +94,11 @@ const InviteForm: React.FC<InviteFormProps> = ({lang}) => {
               type="text"
               {...register('name')}
               className="form-input"
-              placeholder = {lang === "ru" ? "Your Name" : "Ձեր անունը"}
+              placeholder={lang === "ru" ? "Your Name" : "Ձեր անունը"}
             />
-            {errors.name && (
-              <p className="form-error">{errors.name.message}</p>
-            )}
+            <div className="error-container">
+              <p className={`form-error ${errors.name ? 'visible' : ''}`}>{errors.name?.message || 'Անունը պարտադիր է'}</p>
+            </div>
           </div>
 
           <div className="form-group">
@@ -111,9 +111,9 @@ const InviteForm: React.FC<InviteFormProps> = ({lang}) => {
               className="form-input"
               placeholder="+374 55 52 22 85"
             />
-            {errors.phone && (
-              <p className="form-error">{errors.phone.message}</p>
-            )}
+            <div className="error-container">
+              <p className={`form-error ${errors.phone ? 'visible' : ''}`}>{errors.phone?.message || 'Հեռախոսահամարը պետք է լինի +374 XX-XXX-XXX ձևաչափով'}</p>
+            </div>
           </div>
 
           <div className="form-group">
@@ -124,11 +124,11 @@ const InviteForm: React.FC<InviteFormProps> = ({lang}) => {
               type="number"
               {...register('guestsCount')}
               className="form-input"
-              placeholder = {lang === "ru" ? "For example: 3" : "Օր.՝ 3"}
+              placeholder={lang === "ru" ? "For example: 3" : "Օր.՝ 3"}
             />
-            {errors.guestsCount && (
-              <p className="form-error">{errors.guestsCount.message}</p>
-            )}
+            <div className="error-container">
+              <p className={`form-error ${errors.guestsCount ? 'visible' : ''}`}>{errors.guestsCount?.message || 'Հյուրերի քանակը պարտադիր է'}</p>
+            </div>
           </div>
 
           <div className="form-row">
@@ -137,28 +137,29 @@ const InviteForm: React.FC<InviteFormProps> = ({lang}) => {
                 {lang === "ru" ? "Can you attend the wedding?" : "Կարո՞ղ եք մասնակցել հարսանիքին։ *"}
               </label>
               <div className="radio-group">
-<label className="radio2">
-                <input
-                  type="radio"
-                  value="true"
-                  {...register('isVisiting')}
-                />
-                <span className="dot" aria-hidden></span>
+                <label className="radio2 option-label">
+                  <input
+                    type="radio"
+                    value="true"
+                    {...register('isVisiting')}
+                  />
+                  <span className="dot" aria-hidden></span>
                   <span>{lang === "ru" ? "Yes" : "Այո"}</span>
                 </label>
 
-                <label className="radio-label">
+                <label className="radio2 option-label">
                   <input
                     type="radio"
                     value="false"
                     {...register('isVisiting')}
                   />
+                  <span className="dot" aria-hidden></span>
                   <span>{lang === "ru" ? "No" : "Ցավոք՝ ոչ"}</span>
                 </label>
               </div>
-              {errors.isVisiting && (
-                <p className="form-error">{errors.isVisiting.message}</p>
-              )}
+              <div className="error-container">
+                <p className={`form-error ${errors.isVisiting ? 'visible' : ''}`}>{errors.isVisiting?.message || 'Այցելությունը պարտադիր է'}</p>
+              </div>
             </div>
 
             <div className="form-group">
@@ -166,28 +167,29 @@ const InviteForm: React.FC<InviteFormProps> = ({lang}) => {
                 {lang === "ru" ? "Who is inviting you?" : "Ու՞մ կողմից *"}
               </label>
               <div className="radio-group">
-<label className="radio2">
-                <input
-                  type="radio"
-                  value= "Փեսա"
-                  {...register('bride_groom')}
-                />
-                <span className="dot" aria-hidden></span>
+                <label className="radio2 option-label">
+                  <input
+                    type="radio"
+                    value="Փեսա"
+                    {...register('bride_groom')}
+                  />
+                  <span className="dot" aria-hidden></span>
                   <span>{lang === "ru" ? "Groom" : "Փեսա"}</span>
                 </label>
 
-                <label className="radio-label">
+                <label className="radio2 option-label">
                   <input
                     type="radio"
                     value="Հարս"
                     {...register('bride_groom')}
                   />
+                  <span className="dot" aria-hidden></span>
                   <span>{lang === "ru" ? "Bride" : "Հարսի"}</span>
                 </label>
               </div>
-              {errors.bride_groom && (
-                <p className="form-error">{errors.bride_groom.message}</p>
-              )}
+              <div className="error-container">
+                <p className={`form-error ${errors.bride_groom ? 'visible' : ''}`}>{errors.bride_groom?.message || 'Պարտադիր դաշտ'}</p>
+              </div>
             </div>
           </div>
 

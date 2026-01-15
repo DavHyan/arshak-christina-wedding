@@ -3,9 +3,6 @@ import footer_mail from '../assets/footer/mail_hraviratoms.svg';
 import footer_facebook_icon from '../assets/footer/facebook_icon.svg';
 import footer_instagram_icon from '../assets/footer/instagram_icon.svg';
 import footer_tiktok_icon from '../assets/footer/tik-tok.svg';
-import footer_telegram_icon from '../assets/footer/instagram_icon.svg';
-import footer_youtube_icon from '../assets/footer/instagram_icon.svg';
-import footer_logo from '../assets/icons/tel_icon.svg';
 import './Footer.css';
 
 const Footer = () => {
@@ -13,7 +10,7 @@ const Footer = () => {
     <footer className="site-footer">
       <div className="footer-inner">
         <div className="footer-logo">
-          <img src={footer_logo} alt="footer_logo" />
+          <img src="/hraviratoms_logo.webp" alt="Hraviratoms logo" className="footer-logo-img" />
         </div>
 
         <p className="footer-domain">hraviratoms.com</p>
@@ -39,14 +36,14 @@ const Footer = () => {
           <a href="https://www.instagram.com/hraviratoms_com?igsh=MTFwczgyaXpsMXVidw%3D%3D&utm_source=qr" target="_blank" rel="noreferrer">
             <img src={footer_instagram_icon} alt="instagram_icon" />
           </a>
-          <a href="https://www.tiktok.com/../../../../../public/hraviratoms.com?_t=ZS-8vHtUd9OVq4&_r=1" target="_blank" rel="noreferrer">
-            <img src={footer_tiktok_icon} alt="tiktok_icon" />
+          <a href="https://www.tiktok.com/@hraviratoms_com" target="_blank" rel="noopener noreferrer">
+            <img src={footer_tiktok_icon} alt="TikTok - hraviratoms" />
           </a>
-          <a href="https://t.me/hraviratoms_com" target="_blank" rel="noreferrer">
-            <img src={footer_telegram_icon} alt="telegram_icon" />
+          <a href="https://t.me/hraviratoms_com" target="_blank" rel="noopener noreferrer">
+            <img src="/telegram_icon.svg" alt="Telegram - hraviratoms" />
           </a>
-          <a href="https://www.youtube.com/../../../../../public/Hraviratomser" target="_blank" rel="noreferrer">
-            <img src={footer_youtube_icon} alt="youtube_icon" />
+          <a href="https://www.youtube.com/@Hraviratomser" target="_blank" rel="noopener noreferrer">
+            <img src="/youtube_icon.svg" alt="YouTube - Hraviratomser" />
           </a>
         </div>
       </div>
